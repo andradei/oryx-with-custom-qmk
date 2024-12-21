@@ -4,6 +4,8 @@ This repository allows combining the convenience of [Oryx’s](https://www.zsa.i
 
 For a detailed guide, check out the full [blog post here](https://blog.zsa.io/oryx-custom-qmk-features).
 
+For QMK keycodes, see this [the official docs](https://docs.qmk.fm/keycodes_basic). ZSA uses a forked QMK, if some keycodes don't work, it might not be supported.
+
 ## How it works
 
 Each time you run the GitHub Action, the workflow will:
