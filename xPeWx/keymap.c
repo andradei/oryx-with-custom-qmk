@@ -1,7 +1,12 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "features/achordion.h"
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
+
+void matrix_scan_user(void) {
+  achordion_task();
+}
 
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
@@ -139,6 +144,8 @@ bool rgb_matrix_indicators_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_achordion(keycode, record)) { return false; }
+
   switch (keycode) {
 
     case RGB_SLD:
