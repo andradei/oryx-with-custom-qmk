@@ -361,7 +361,7 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
     case MOD_RGUI:
       switch(other_keycode) {
         case KC_Q: // Close Hyprland window
-          return true
+          return true;
           break;
       }
 
