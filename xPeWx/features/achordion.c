@@ -343,17 +343,15 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* tap_hold_record,
                                            uint16_t other_keycode,
                                            keyrecord_t* other_record) {
-  // Allow some GUI + key/mouse click chords as holds
+  // Treat some specific sequences as holds.
   switch (tap_hold_keycode) {
     case MOD_LGUI:
       switch (other_keycode) {
         case KC_ENTER: // Open terminal in Hyprland
-        case MS_BTN1:  // Mouse button 1
-        case MS_BTN2:  // Mouse button 2
-        case MS_BTN3:  // Mouse button 3
-        case MS_BTN4:  // Mouse button 4
-        case MS_BTN5:  // Mouse button 5
           return true;
+          break;
+        case KC_S: // Don't toggle Hyprland special workspace
+          return false;
           break;
       }
 
@@ -361,6 +359,7 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
     case MOD_RGUI:
       switch(other_keycode) {
         case KC_Q: // Close Hyprland window
+        case KC_W: // Open web browser in Hyprland
           return true;
           break;
       }
@@ -387,7 +386,8 @@ __attribute__((weak)) uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
 
 // By default, Shift and Ctrl mods are eager, and Alt and GUI are not.
 __attribute__((weak)) bool achordion_eager_mod(uint8_t mod) {
-  return (mod & (MOD_LALT | MOD_LGUI)) == 0;
+  //return (mod & (MOD_LALT | MOD_LGUI)) == 0;
+  return (mod & MOD_LALT) == 0;
 }
 
 #ifdef ACHORDION_STREAK
