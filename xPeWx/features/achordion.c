@@ -61,7 +61,7 @@ static bool pressed_another_key_before_release = false;
 #define HOME_J RSFT_T(KC_J)
 #define HOME_K RCTL_T(KC_K)
 #define HOME_L RALT_T(KC_L)
-#define HOME_COLON RGUI_T(KC_SCLN) // colon and semicolon share a keycode
+#define HOME_COLON TD(DANCE_0) // ":" is a tap-dance set by Oryx. See keymap.c.
 
 // ------------------------------------------------
 // End of customization.
