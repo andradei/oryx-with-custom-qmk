@@ -38,6 +38,14 @@ static uint8_t eager_mods = 0;
 // Flag to determine whether another key is pressed within the timeout.
 static bool pressed_another_key_before_release = false;
 
+#ifndef SPLIT_KEYBOARD
+#define SPLIT_KEYBOARD
+#endif /* ifndef SPLIT_KEYBOARD */
+
+#ifndef ACHORION_STREAK
+#define ACHORION_STREAK
+#endif /* ifndef ACHORION_STREAK */
+
 #ifdef ACHORDION_STREAK
 // Timer for typing streak
 static uint16_t streak_timer = 0;
@@ -335,33 +343,17 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* tap_hold_record,
                                            uint16_t other_keycode,
                                            keyrecord_t* other_record) {
-  // switch (tap_hold_keycode) {
-  //   case MOD_LGUI:  // Meta + ENTER
-  //     if (other_keycode == KC_ENTER) { return true; }
-  //     break;
-    
-  //   case MOD_RGUI:  // Meta + ENTER
-  //     if (other_keycode == KC_ENTER) { return true; }
-  //     break;
-  // }
-
-  // Also allow same-hand holds when the other key is in the rows below the
-  // alphas. I need the `% (MATRIX_ROWS / 2)` because my keyboard is split.
-  if (other_record->event.key.row % (MATRIX_ROWS / 2) >= 4) { return true; }
-  
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
 // By default, the timeout is 1000 ms for all keys.
 __attribute__((weak)) uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  // return 1000;
-  return 500;
+  return 1000;
 }
 
 // By default, Shift and Ctrl mods are eager, and Alt and GUI are not.
 __attribute__((weak)) bool achordion_eager_mod(uint8_t mod) {
-  // return (mod & (MOD_LALT | MOD_LGUI)) == 0;
-  return (mod & (MOD_LALT)) == 0;
+  return (mod & (MOD_LALT | MOD_LGUI)) == 0;
 }
 
 #ifdef ACHORDION_STREAK
