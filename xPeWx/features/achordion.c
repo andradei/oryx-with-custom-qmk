@@ -38,6 +38,11 @@ static uint8_t eager_mods = 0;
 // Flag to determine whether another key is pressed within the timeout.
 static bool pressed_another_key_before_release = false;
 
+// ------------------------------------------------
+// Customization
+// Aside from the functions at the end of the file.
+// ------------------------------------------------
+
 #ifndef SPLIT_KEYBOARD
 #define SPLIT_KEYBOARD
 #endif /* ifndef SPLIT_KEYBOARD */
@@ -45,6 +50,22 @@ static bool pressed_another_key_before_release = false;
 #ifndef ACHORION_STREAK
 #define ACHORION_STREAK
 #endif /* ifndef ACHORION_STREAK */
+
+// My ZSA Voyager home-row:
+// Left hand.
+#define HOME_A LGUI_T(KC_A)
+#define HOME_S LALT_T(KC_S)
+#define HOME_D LCTL_T(KC_D)
+#define HOME_F LSFT_T(KC_F)
+// Right hand.
+#define HOME_J RSFT_T(KC_J)
+#define HOME_K RCTL_T(KC_K)
+#define HOME_L RALT_T(KC_L)
+#define HOME_COLON RGUI_T(KC_SEMICOLON) // colon and semicolon share a keycode
+
+// ------------------------------------------------
+// End of customization.
+// ------------------------------------------------
 
 #ifdef ACHORDION_STREAK
 // Timer for typing streak
@@ -345,18 +366,18 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* other_record) {
   // Treat some specific sequences as holds.
   switch (tap_hold_keycode) {
-    case MOD_LGUI:
+    case HOME_A:
       switch (other_keycode) {
         case KC_ENTER: // Open terminal in Hyprland
           return true;
           break;
-        case KC_S: // Don't toggle Hyprland special workspace
+        case HOME_S: // Don't toggle Hyprland special workspace
           return false;
           break;
       }
 
       break;
-    case MOD_RGUI:
+    case HOME_COLON:
       switch(other_keycode) {
         case KC_Q: // Close Hyprland window
         case KC_W: // Open web browser in Hyprland
@@ -365,7 +386,7 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
       }
 
       break;
-    case MOD_LSFT:
+    case HOME_F:
       switch (other_keycode) {
         case MO(1):
           return true;
