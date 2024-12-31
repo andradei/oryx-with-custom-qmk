@@ -343,12 +343,46 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* tap_hold_record,
                                            uint16_t other_keycode,
                                            keyrecord_t* other_record) {
+  // Allow some GUI + key/mouse click chords as holds
+  switch (tap_hold_keycode) {
+    case MOD_LGUI:
+      switch (other_keycode) {
+        case KC_ENTER: // Open terminal in Hyprland
+        case MS_BTN1:  // Mouse button 1
+        case MS_BTN2:  // Mouse button 2
+        case MS_BTN3:  // Mouse button 3
+        case MS_BTN4:  // Mouse button 4
+        case MS_BTN5:  // Mouse button 5
+          return true;
+          break;
+      }
+
+      break;
+    case MOD_RGUI:
+      switch(other_keycode) {
+        case KC_Q: // Close Hyprland window
+          return true
+          break;
+      }
+
+      break;
+    case MOD_LSFT:
+      switch (other_keycode) {
+        case MO(1):
+          return true;
+          break;
+      }
+
+      break;
+  }
+
   return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
 // By default, the timeout is 1000 ms for all keys.
 __attribute__((weak)) uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  return 1000;
+  //return 1000;
+  return 500;
 }
 
 // By default, Shift and Ctrl mods are eager, and Alt and GUI are not.
