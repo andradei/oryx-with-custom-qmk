@@ -61,7 +61,7 @@ static bool pressed_another_key_before_release = false;
 #define HOME_J RSFT_T(KC_J)
 #define HOME_K RCTL_T(KC_K)
 #define HOME_L RALT_T(KC_L)
-#define HOME_COLON RGUI_T(KC_SEMICOLON) // colon and semicolon share a keycode
+#define HOME_COLON RGUI_T(KC_SCLN) // colon and semicolon share a keycode
 
 // ------------------------------------------------
 // End of customization.
@@ -367,32 +367,17 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
   // Treat some specific sequences as holds.
   switch (tap_hold_keycode) {
     case HOME_A:
-      switch (other_keycode) {
-        case KC_ENTER: // Open terminal in Hyprland
-          return true;
-          break;
-        case HOME_S: // Don't toggle Hyprland special workspace
-          return false;
-          break;
-      }
-
+      if (other_keycode == KC_ENTER) { return true; } // Open terminal in Hyprland
       break;
+
     case HOME_COLON:
-      switch(other_keycode) {
-        case KC_Q: // Close Hyprland window
-        case KC_W: // Open web browser in Hyprland
-          return true;
-          break;
-      }
-
+      if (other_keycode == KC_Q || // Close Hyprland window
+          other_keycode == KC_W) // Open web browser in Hyprland
+          { return true; }
       break;
-    case HOME_F:
-      switch (other_keycode) {
-        case MO(1):
-          return true;
-          break;
-      }
 
+    case HOME_F:
+      if (other_keycode == MO(1)) { return true; }
       break;
   }
 
