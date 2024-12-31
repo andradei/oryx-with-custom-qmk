@@ -367,7 +367,8 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
   // Treat some specific sequences as holds.
   switch (tap_hold_keycode) {
     case HOME_A:
-      if (other_keycode == KC_ENTER) { return true; } // Open terminal in Hyprland
+      // Access layer 1 (where KC_ENTER and numbers are) with Meta/GUI mod.
+      if (other_keycode == MO(1)) { return true; }
       break;
 
     case HOME_COLON:
