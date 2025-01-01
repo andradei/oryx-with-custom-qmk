@@ -61,7 +61,7 @@ static bool pressed_another_key_before_release = false;
 #define HOME_J RSFT_T(KC_J)
 #define HOME_K RCTL_T(KC_K)
 #define HOME_L RALT_T(KC_L)
-#define HOME_COLON TD(DANCE_0) // ":" is a tap-dance set by Oryx. See keymap.c.
+#define HOME_SCLN RGUI_T(KC_SCLN)
 
 // ------------------------------------------------
 // End of customization.
@@ -371,7 +371,7 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
       if (other_keycode == MO(1)) { return true; }
       break;
 
-    case HOME_COLON:
+    case HOME_SCLN:
       if (other_keycode == KC_Q || // Close Hyprland window
           other_keycode == KC_W) // Open web browser in Hyprland
           { return true; }
