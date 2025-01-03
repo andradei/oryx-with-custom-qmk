@@ -367,7 +367,9 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
   // Treat some specific sequences as holds.
   switch (tap_hold_keycode) {
     case HOME_A:
-      // Access layer 1 (where KC_ENTER and numbers are) with Meta/GUI mod.
+    case HOME_S:
+    case HOME_F:
+      // Access layer 1 (where KC_ENTER and numbers are) with left GUI/ALT/SHIFT mod.
       if (other_keycode == MO(1)) { return true; }
       break;
 
@@ -375,10 +377,6 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
       if (other_keycode == KC_Q || // Close Hyprland window
           other_keycode == KC_W) // Open web browser in Hyprland
           { return true; }
-      break;
-
-    case HOME_F:
-      if (other_keycode == MO(1)) { return true; }
       break;
   }
 
