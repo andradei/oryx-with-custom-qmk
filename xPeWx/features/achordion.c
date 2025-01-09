@@ -53,7 +53,7 @@ static bool pressed_another_key_before_release = false;
 
 // My ZSA Voyager home-row:
 // Left hand.
-#define HOME_A LGUI_T(KC_A)
+#define HOME_Z LGUI_T(KC_Z)
 #define HOME_S LALT_T(KC_S)
 #define HOME_D LCTL_T(KC_D)
 #define HOME_F LSFT_T(KC_F)
@@ -61,7 +61,7 @@ static bool pressed_another_key_before_release = false;
 #define HOME_J RSFT_T(KC_J)
 #define HOME_K RCTL_T(KC_K)
 #define HOME_L RALT_T(KC_L)
-#define HOME_SCLN RGUI_T(KC_SCLN)
+#define HOME_SLASH RGUI_T(KC_SLASH)
 
 // ------------------------------------------------
 // End of customization.
@@ -366,14 +366,14 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
                                            keyrecord_t* other_record) {
   // Treat some specific sequences as holds.
   switch (tap_hold_keycode) {
-    case HOME_A:
+    case HOME_Z:
     case HOME_S:
     case HOME_F:
       // Access layer 1 (where KC_ENTER and numbers are) with left GUI/ALT/SHIFT mod.
       if (other_keycode == MO(1)) { return true; }
       break;
 
-    case HOME_SCLN:
+    case HOME_SLASH:
       if (other_keycode == KC_Q || // Close Hyprland window
           other_keycode == KC_W) // Open web browser in Hyprland
           { return true; }
