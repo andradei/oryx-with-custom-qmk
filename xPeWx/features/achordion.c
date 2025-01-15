@@ -368,8 +368,9 @@ __attribute__((weak)) bool achordion_chord(uint16_t tap_hold_keycode,
   switch (tap_hold_keycode) {
     case HOME_Z:
     case HOME_S:
+    case HOME_D:
     case HOME_F:
-      // Access layer 1 (where KC_ENTER and numbers are) with left GUI/ALT/SHIFT mod.
+      // Access layer 1 (where KC_ENTER and numbers are) with left home-row mod keys.
       if (other_keycode == MO(1)) { return true; }
       break;
 
