@@ -18,8 +18,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,                                           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_NO,          
-    KC_ESCAPE,      KC_A,           MT(MOD_LALT, KC_S),MT(MOD_LCTL, KC_D),KC_F,           KC_G,                                           KC_H,           KC_J,           MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),KC_SCLN,        MO(4),          
-    KC_LEFT_SHIFT,  MT(MOD_LGUI, KC_Z),KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         MT(MOD_RGUI, KC_SLASH),KC_RIGHT_SHIFT, 
+    KC_LEFT_SHIFT,  KC_A,           MT(MOD_LALT, KC_S),MT(MOD_LCTL, KC_D),KC_F,           KC_G,                                           KC_H,           KC_J,           MT(MOD_RCTL, KC_K),MT(MOD_RALT, KC_L),KC_SCLN,        KC_RIGHT_SHIFT, 
+    KC_ESCAPE,      MT(MOD_LGUI, KC_Z),KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         MT(MOD_RGUI, KC_SLASH),MO(4),          
                                                     KC_BSPC,        MO(1),                                          MO(2),          KC_SPACE
   ),
   [1] = LAYOUT_voyager(
@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_MEDIA_STOP,  KC_MEDIA_PREV_TRACK,KC_MEDIA_PLAY_PAUSE,KC_MEDIA_NEXT_TRACK,KC_NO,                                          KC_NO,          KC_AUDIO_VOL_DOWN,KC_AUDIO_MUTE,  KC_AUDIO_VOL_UP,KC_NO,          KC_NO,          
     KC_NO,          KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,                                          KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_TRANSPARENT, 
-    KC_NO,          KC_NO,          QK_DYNAMIC_TAPPING_TERM_DOWN,QK_DYNAMIC_TAPPING_TERM_UP,QK_DYNAMIC_TAPPING_TERM_PRINT,KC_NO,                                          KC_NO,          KC_F11,         KC_F12,         RGB_VAD,        RGB_VAI,        KC_NO,          
+    KC_NO,          KC_NO,          QK_DYNAMIC_TAPPING_TERM_DOWN,QK_DYNAMIC_TAPPING_TERM_UP,QK_DYNAMIC_TAPPING_TERM_PRINT,KC_NO,                                          KC_NO,          KC_F11,         KC_F12,         RGB_VAD,        RGB_VAI,        KC_TRANSPARENT, 
                                                     KC_NO,          KC_TRANSPARENT,                                 KC_NO,          TO(5)
   ),
   [5] = LAYOUT_voyager(
@@ -86,7 +86,7 @@ void keyboard_post_init_user(void) {
 }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [0] = { {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,206}, {0,0,206}, {0,0,0}, {0,0,0}, {0,0,206}, {0,0,206}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {132,225,253}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,206}, {0,0,0}, {0,0,0}, {0,0,206}, {0,0,206}, {0,0,0}, {186,169,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,206}, {0,0,206}, {87,247,224}, {0,0,0} },
+    [0] = { {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,206}, {0,0,0}, {0,0,206}, {0,0,206}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,206}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {132,225,253}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,206}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,206}, {0,0,0}, {0,0,0}, {0,0,206}, {0,0,206}, {0,0,0}, {0,0,206}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,206}, {186,169,255}, {87,247,224}, {0,0,0} },
 
     [1] = { {132,225,182}, {132,225,182}, {132,225,182}, {132,225,182}, {132,225,182}, {132,225,182}, {132,225,182}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,255}, {0,0,0}, {108,237,255}, {108,237,255}, {43,239,210}, {132,225,182}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,0}, {0,0,0}, {0,0,0}, {132,225,182}, {132,225,182}, {132,225,182}, {132,225,182}, {132,225,182}, {132,225,182}, {43,239,210}, {0,0,255}, {0,0,255}, {0,0,255}, {43,239,210}, {132,225,182}, {43,239,210}, {0,0,255}, {0,0,255}, {0,0,255}, {132,225,182}, {0,0,0}, {132,225,182}, {0,0,255}, {0,0,255}, {0,0,255}, {43,239,210}, {132,225,182}, {132,225,182}, {0,0,255} },
 
